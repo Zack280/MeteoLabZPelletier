@@ -38,7 +38,10 @@
     </UnoFeatures>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CSharpMarkup.WinUI.LiveChartsCore.SkiaSharpView" />
     <PackageReference Include="HtmlAgilityPack" />
+    <PackageReference Include="LiveCharts" />
+    <PackageReference Include="LiveCharts.Core" />
   </ItemGroup>
 
 </Project>

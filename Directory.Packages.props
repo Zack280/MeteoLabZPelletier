@@ -8,6 +8,11 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <PackageVersion Include="CSharpMarkup.WinUI.LiveChartsCore.SkiaSharpView" Version="3.1.2" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageVersion Include="LiveCharts" Version="0.9.7" />
+    <PackageVersion Include="LiveCharts.Core" Version="0.9.8" />
+    <PackageVersion Include="LiveCharts.WinForms" Version="0.9.7.1" />
+    <PackageVersion Include="LiveCharts.Wpf" Version="0.9.7" />
   </ItemGroup>
 </Project>

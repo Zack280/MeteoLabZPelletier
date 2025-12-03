@@ -130,91 +130,9 @@ public sealed partial class MainPage : Page
         OrganiserListe();
     }
 
-    public async Task CalculerStats()
-    {
-        if (!DateDebutPicker.Date.HasValue || !DateFinPicker.Date.HasValue)
-            return;
-
-        DateTime dateDebut = DateDebutPicker.Date.Value.DateTime;
-        DateTime dateFin = DateFinPicker.Date.Value.DateTime;
-
-        var liste = ViewModel.ListePrincipale;
-        List<Donnees> dateChoisies = new List<Donnees>();
-
-        for (int i = 0; i < liste.Count; i++)
-        {
-            DateTime currentDate = DateTime.ParseExact(liste[i].Date, "dd/MM/yyyy", null);
-
-            if (currentDate >= dateDebut && currentDate <= dateFin)
-            {
-                dateChoisies.Add(liste[i]);
-            }
-        }
-
-        if (dateChoisies.Count == 0)
-        {
-            Console.WriteLine("Liste de datechoisies vide");
-            return;
-        }
-
-        float totalTemp = 0f;
-        float totalPrecip = 0f;
-        float totalHumid = 0f;
-
-
-        for (int i = 0;i < dateChoisies.Count;i++)
-        {
-            totalTemp += dateChoisies[i].Temperature;
-            totalPrecip += dateChoisies[i].Precipitations;
-            totalHumid += dateChoisies[i].Humidite;    
-        }
-
-        ViewModel.MaxTemp = dateChoisies.Max(x => x.Temperature).ToString();
-        ViewModel.MinTemp = dateChoisies.Min(x => x.Temperature).ToString();
-        ViewModel.MaxPrecip = dateChoisies.Max(x => x.Precipitations).ToString();
-        ViewModel.MinPrecip = dateChoisies.Min(x => x.Precipitations).ToString();
-        ViewModel.MaxHumid = dateChoisies.Max(x => x.Humidite).ToString();
-        ViewModel.MinHumid = dateChoisies.Min(x => x.Humidite).ToString();
-
-        ViewModel.AvgTemp = (totalTemp / dateChoisies.Count).ToString();
-        ViewModel.AvgPrecip = (totalPrecip / dateChoisies.Count).ToString();
-        ViewModel.AvgHumid = (totalHumid / dateChoisies.Count).ToString();
-
-        float AverageTemp = (totalTemp / dateChoisies.Count);
-        float AveragePrecip = (totalPrecip / dateChoisies.Count);
-        float AverageHumid = (totalHumid/dateChoisies.Count);
-
-        float variance = 0f;
-
-        foreach (var i in dateChoisies)
-        {
-            float diff = i.Temperature - AverageTemp; // On calcule la diffrence entre la temperature de la Journe[i] et la moyenne
-            variance += diff * diff; // On calcule la sommation des differences au carres selon la formule de la variance
-        }
-
-        ViewModel.EtTemp = ((float)Math.Sqrt(variance)).ToString();
-        variance = 0f;
-        foreach (var i in dateChoisies)
-        {
-            float diff = i.Precipitations - AveragePrecip; // On calcule la diffrence entre la temperature de la Journe[i] et la moyenne
-            variance += diff * diff; // On calcule la sommation des differences au carres selon la formule de la variance
-        }
-        variance = 0f;
-        ViewModel.EtPrecip = ((float)Math.Sqrt(variance)).ToString();
-        foreach (var i in dateChoisies)
-        {
-            float diff = i.Humidite - AverageHumid; // On calcule la diffrence entre la temperature de la Journe[i] et la moyenne
-            variance += diff * diff; // On calcule la sommation des differences au carres selon la formule de la variance
-        }
-
-        ViewModel.EtHumid = ((float)Math.Sqrt(variance)).ToString();
-
-
-
-    }
 
     private async void CalculerStatsClick(object sender, EventArgs e)
     {
-        await CalculerStats();
+        await ViewModel.CalculerStats();
     }
 }

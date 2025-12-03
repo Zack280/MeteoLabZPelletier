@@ -6,6 +6,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
+      xmlns:lc="using:LiveChartsCore.SkiaSharpView.WinUI"
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
     <Grid x:Name="rootGrid">
@@ -218,7 +219,8 @@
                                     Width="180"/>
                                 <CalendarDatePicker x:Name="DateDebutPicker" 
                                     Width="200"
-                                    PlaceholderText="Sélectionner date"/>
+                                    PlaceholderText="Sélectionner date"
+                                    Date="{x:Bind ViewModel.DateDebutPicker, Mode=TwoWay}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Spacing="10">
@@ -228,7 +230,8 @@
                                     Width="180"/>
                                 <CalendarDatePicker x:Name="DateFinPicker" 
                                     Width="200"
-                                    PlaceholderText="Sélectionner date"/>
+                                    PlaceholderText="Sélectionner date"
+                                    Date="{x:Bind ViewModel.DateFinPicker, Mode=TwoWay}" />
                             </StackPanel>
                         </StackPanel>
 
@@ -461,9 +464,11 @@
 
                         </Pivot>
 
-                        <!-- Second Row - Add your content here -->
                         <Grid Grid.Row="1" Background="LightBlue">
-
+                            <lc:CartesianChart 
+                                Series="{x:Bind ViewModel.TemperatureSeries, Mode=OneWay}"
+                                XAxes="{x:Bind ViewModel.XAxis, Mode=OneWay}"
+                                YAxes="{x:Bind ViewModel.YAxis, Mode=OneWay}"/>
                         </Grid>
                     </Grid>
 
