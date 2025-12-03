@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "MeteoLabZPelletier",
+  "display": "standalone",
+  "name": "MeteoLabZPelletier",
+  "short_name": "MeteoLabZPelletier",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
