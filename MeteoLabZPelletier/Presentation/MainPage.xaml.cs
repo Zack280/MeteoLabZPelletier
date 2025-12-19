@@ -1,5 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.Kiota.Abstractions;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Shapes;
 using Windows.Storage.Pickers;
 
 namespace MeteoLabZPelletier.Presentation;
@@ -12,8 +17,8 @@ public sealed partial class MainPage : Page
         
         this.InitializeComponent();
         this.DataContext = ViewModel;
-
     }
+
 
     private string DateExistante = string.Empty;
     public async Task AjouterBouton(object sender, RoutedEventArgs e)
@@ -135,4 +140,6 @@ public sealed partial class MainPage : Page
     {
         await ViewModel.CalculerStats();
     }
+
+
 }

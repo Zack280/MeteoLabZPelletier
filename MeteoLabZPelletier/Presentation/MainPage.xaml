@@ -9,16 +9,20 @@
       xmlns:lc="using:LiveChartsCore.SkiaSharpView.WinUI"
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
-    <Grid x:Name="rootGrid">
+
+
+    
+    <Grid x:Name="rootGrid"
+          Background="#1E1E2F">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <StackPanel x:Name="Header" Grid.Row="0" Background="AliceBlue">
+        <StackPanel x:Name="Header" Grid.Row="0" Background="#1E1E2F">
             <TextBlock x:Name="Title" 
-                   Foreground="Black" 
+                   Foreground="#F3F3F3" 
                    FontSize="48" 
                    FontFamily="Sangrita" 
                    Text="MeteoLab" 
@@ -30,9 +34,23 @@
         <!-- Pivot Control -->
         <Pivot Grid.Row="1" x:Name="MainPivot">
 
+
             <!-- Menu Principal Tab -->
-            <PivotItem Header="Menu Principal">
-                <Grid Background="Blue">
+            <PivotItem Header="Menu Principal" Background="#1E1E2F">
+                <Grid Background="#2A2A40">
+
+                    <!-- Glassy overlay using AcrylicBrush -->
+                    <Grid>
+                        <Grid.Background>
+                            <AcrylicBrush BackgroundSource="HostBackdrop" 
+                          TintColor="#80FFFFFF"
+                          TintOpacity="0.2"
+                          FallbackColor="#80FFFFFF"
+                          Opacity="0.2"/>
+                        </Grid.Background>
+                    </Grid>
+
+
                     <Grid x:Name="QuickInfoBlock">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -46,11 +64,11 @@
                             <TextBlock x:Name="DateText"
                                    Margin="0,0,10,0"
                                    Text="{x:Bind ViewModel.DateCourante}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="20"/>
                             <TextBlock x:Name="TempText"
                                    Text="{x:Bind ViewModel.TemperatureCourante}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="20"/>
                         </StackPanel>
 
@@ -59,12 +77,12 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
                             <TextBlock Text="Bienvenue à MeteoLab"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="24"
                                    HorizontalAlignment="Center"
                                    Margin="0,0,0,30"/>
                             <TextBlock Text="Utilisez les onglets ci-dessus pour naviguer"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="16"
                                    HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -89,7 +107,7 @@
                         </StackPanel>
                     </ContentDialog>
 
-                    <Grid Background="Blue">
+                    <Grid Background="#2A2A40">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -104,7 +122,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Date (dd/MM/YYYY):" 
                                    VerticalAlignment="Center"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    Width="180"/>
                                 <TextBox x:Name="DateBox" Width="200"/>
                             </StackPanel>
@@ -112,7 +130,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Temperature (C):" 
                                    VerticalAlignment="Center"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    Width="180"/>
                                 <TextBox x:Name="TempBox" Width="200"/>
                             </StackPanel>
@@ -120,7 +138,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Précipitations (mm):" 
                                    VerticalAlignment="Center"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    Width="180"/>
                                 <TextBox x:Name="PrecipBox" Width="200"/>
                             </StackPanel>
@@ -128,7 +146,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Humidité (%):" 
                                    VerticalAlignment="Center"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    Width="180"/>
                                 <TextBox x:Name="HumidBox" Width="200"/>
                             </StackPanel>
@@ -164,30 +182,30 @@
                                         Padding="10" 
                                         Spacing="15">
                                         <TextBlock Text="{x:Bind Date}" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             Width="120"
                                             FontSize="16"/>
                                         <TextBlock Text="{x:Bind Temperature}" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             Width="20"
                                             FontSize="16"/>
                                         <TextBlock Text="°C" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             Width="30"
                                             FontSize="16"/>
                                         <TextBlock Text="{x:Bind Precipitations}" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             Width="20"
                                             FontSize="16"/>
                                         <TextBlock Text="mm" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             FontSize="16"/>
                                         <TextBlock Text="{x:Bind Humidite}" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             Width="20"
                                             FontSize="16"/>
                                         <TextBlock Text="%" 
-                                            Foreground="White" 
+                                            Foreground="#F3F3F3" 
                                             FontSize="16"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -199,7 +217,7 @@
 
             <!-- Calcul des Statistiques Tab -->
             <PivotItem Header="Calcul des Statistiques">
-                <Grid Background="Blue">
+                <Grid Background="#2A2A40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -215,7 +233,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Date de début:" 
                                     VerticalAlignment="Center"
-                                    Foreground="White"
+                                    Foreground="#F3F3F3"
                                     Width="180"/>
                                 <CalendarDatePicker x:Name="DateDebutPicker" 
                                     Width="200"
@@ -226,7 +244,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <TextBlock Text="Date de fin:" 
                                     VerticalAlignment="Center"
-                                    Foreground="White"
+                                    Foreground="#F3F3F3"
                                     Width="180"/>
                                 <CalendarDatePicker x:Name="DateFinPicker" 
                                     Width="200"
@@ -260,7 +278,7 @@
 
                             <!-- Moyenne Tab -->
                             <PivotItem Header="Moyenne">
-                                <Grid Background="Blue">
+                                <Grid Background="#2A2A40">
                                     <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -268,12 +286,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Température Moyenne"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MoyenneTempText"
                                    Text="{x:Bind ViewModel.AvgTemp, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -281,12 +299,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Précipitations Moyennes"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MoyennePrecipText"
                                    Text="{x:Bind ViewModel.AvgPrecip, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -294,12 +312,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Humidité Moyenne"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MoyenneHumidText"
                                    Text="{x:Bind ViewModel.AvgHumid, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -319,12 +337,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Température Minimale"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MinTempText"
                                    Text="{x:Bind ViewModel.MinTemp, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -332,12 +350,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Précipitations Minimales"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MinPrecipText"
                                    Text="{x:Bind ViewModel.MinPrecip, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -345,12 +363,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Humidité Minimale"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MinHumidText"
                                    Text="{x:Bind ViewModel.MinHumid, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -370,12 +388,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Température Maximale"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MaxTempText"
                                    Text="{x:Bind ViewModel.MaxTemp, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -383,12 +401,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Précipitations Maximales"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MaxPrecipText"
                                    Text="{x:Bind ViewModel.MaxPrecip, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -396,12 +414,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Humidité Maximale"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="MaxHumidText"
                                    Text="{x:Bind ViewModel.MaxHumid, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -421,12 +439,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Écart-type Température"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="EcartTypeTempText"
                                    Text="{x:Bind ViewModel.EtTemp, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -434,12 +452,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Écart-type Précipitations"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="EcartTypePrecipText"
                                    Text="{x:Bind ViewModel.EtPrecip, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>
@@ -447,12 +465,12 @@
 
                                         <StackPanel Orientation="Vertical" Spacing="5">
                                             <TextBlock Text="Écart-type Humidité"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="14"
                                    HorizontalAlignment="Center"/>
                                             <TextBlock x:Name="EcartTypeHumidText"
                                    Text="{x:Bind ViewModel.EtHumid, Mode=OneWay}"
-                                   Foreground="White"
+                                   Foreground="#F3F3F3"
                                    FontSize="18"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Center"/>

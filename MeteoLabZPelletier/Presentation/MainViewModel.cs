@@ -11,9 +11,13 @@ using MeteoLabZPelletier.Models;
 using MeteoLabZPelletier.Services;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
+using Microsoft.UI.Xaml.Media.Animation;
 using SkiaSharp;
 using Uno.Extensions.Navigation;
 using Windows.UI.ViewManagement;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+
 
 namespace MeteoLabZPelletier.Presentation;
 
@@ -178,7 +182,7 @@ public partial class MainViewModel : ObservableObject
     }
 
 
-    public void InitGraph()
+    public void InitGraph()  //SOurce : https://platform.uno/blog/livecharts-announces-support-for-uno-platform/, l'integration est plus intuitive que celle sur cette page : https://platform.uno/docs/articles/external/uno.chefs/doc/external/LiveCharts.html qui présente l'intégration de manière trop générale
     {
         var ordered = dateChoisies.OrderBy(x => DateTime.ParseExact(x.Date, "dd/MM/yyyy", null)).ToList();
         var tempValues = ordered.Select(x => x.Temperature).ToList();
@@ -248,4 +252,10 @@ public partial class MainViewModel : ObservableObject
         YAxis[0].MinLimit = 0;
         YAxis[0].MaxLimit = 50;
     }
+
+    //Animations et Ui
+
+
+
+
 }
